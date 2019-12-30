@@ -1,12 +1,16 @@
 export default function manageNotes(state = {
-  users: [] 
+  currentUser: {},
+  notes:[]
 }, action) {
   switch(action.type) {
     case 'ADD_USER':
-      const user = {
-        username: action.username
-      }
-      return { ...state, users: [...state.users, user] }
+      return Object.assign({}, state, {
+        currentUser: {
+          username: action.userInfo.username,
+          id: action.userInfo.id,
+        },
+        notes: action.userInfo.notes
+      })
 
     default:
       return state

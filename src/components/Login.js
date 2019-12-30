@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { addUser } from '../actions/loginUser'
 
 class Login extends Component {
   state = {
-    username: ''
+    username: '',
+    notes: []
   }
 
   handleOnChange = event => {
@@ -21,7 +23,8 @@ class Login extends Component {
       'Accept': 'application/json'
       },
       body: JSON.stringify({
-        username: this.state.username
+        username: this.state.username,
+        notes: this.state.notes
       })
     }
 
@@ -29,10 +32,10 @@ class Login extends Component {
     .then(resp => resp.json())
     .then(user => {
       console.log(user)
-      this.props.addUser(user.username)
+      this.props.addUser(user)
       this.props.history.push('/dashboard')
     })
-    this.setState({ username: '' })
+    this.setState({ username: '', notes: [] })
   }
 
   render() {
@@ -45,7 +48,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addUser: username => dispatch({ type: 'ADD_USER', username })
+  addUser: user => dispatch(addUser(user))
 })
 
 export default connect(null, mapDispatchToProps)(Login)
