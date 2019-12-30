@@ -12,13 +12,26 @@ class Login extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    // fetch(url)
-    .then()
+
+    const reqObj = 
+    { 
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username
+      })
+    }
+
+    fetch('http://localhost:3001/users', reqObj)
+    .then(resp => resp.json())
     .then(user => {
-      // dispatch action to the store
-      // reroute to /dashboard
+      console.log(user)
+      this.props.addUser(user.username)
+      this.props.history.push('/dashboard')
     })
-    this.props.addUser(this.state.username)
     this.setState({ username: '' })
   }
 

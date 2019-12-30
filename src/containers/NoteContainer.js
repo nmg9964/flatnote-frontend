@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import NoteList from '../components/NoteList'
 
 class NoteContainer extends Component {
   render() {
-    return
+    return <div>
+      <NoteList />
+    </div>
   }
 }
 
