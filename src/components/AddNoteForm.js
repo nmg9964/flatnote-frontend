@@ -16,31 +16,31 @@ class AddNoteForm extends Component {
     });
   }
 
-  // handleOnSubmit = event => {
-  //   event.preventDefault()
+  handleOnSubmit = event => {
+    event.preventDefault()
 
-  //   const reqObj = 
-  //   { 
-  //     method: 'POST',
-  //     headers: {
-  //     'Content-Type': 'application/json',
-  //     'Accept': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       title: this.state.title,
-  //       content: this.state.content
-  //     })
-  //   }
+    const reqObj = 
+    { 
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        title: this.state.title,
+        content: this.state.content,
+        user_id: this.props.user.id
+      })
+    }
 
-  //   fetch('http://localhost:3001/notes', reqObj)
-  //   .then(resp => resp.json())
-  //   .then(note => {
-  //     console.log(note)
-  //     this.props.addNote(note)
-  //     this.props.history.push('/note/new')
-  //   })
-  //   this.setState({ title: '', content: '' })
-  // }
+    fetch('http://localhost:3001/notes', reqObj)
+    .then(resp => resp.json())
+    .then(note => {
+      this.props.addNote(note)
+      this.props.history.push('/note/new')
+    })
+    this.setState({ title: '', content: '' })
+  }
 
   render() {
     return (
@@ -70,8 +70,12 @@ class AddNoteForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   addNote: note => dispatch(addNote(note))
 })
 
-export default connect(null, mapDispatchToProps)(AddNoteForm)
+export default connect(mapStateToProps, mapDispatchToProps)(AddNoteForm)
