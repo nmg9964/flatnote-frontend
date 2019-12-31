@@ -3,6 +3,7 @@ export default function manageNotes(state = {
   notes:[]
 }, action) {
   switch(action.type) {
+    
     case 'ADD_USER':
       return Object.assign({}, state, {
         currentUser: {

@@ -21,7 +21,7 @@ class Navbar extends React.Component {
           style={link}
         >Logout</NavLink>
         <NavLink
-          to='/dashboard'
+          to='/note/new'
           exact
           style={link}
           >Add Note</NavLink>
