@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 
 class NoteList extends Component {
+  state = {
+    showNote: false
+  }
+
+  toggleNote = () => {
+    this.setState({ showNote: !this.state.showNote })
+  }
+
   render() {
     return <div>
-      <ul>
       {this.props.notes.map(note => {
-        return <li>{note.title}</li>
+        return <h3 onClick={this.toggleNote}>{note.title}</h3>
       })}
-      </ul>
     </div>
   }
 }
