@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { deleteNote } from '../actions/notes'
 
 class NoteCard extends Component {
   render() {
@@ -12,4 +14,8 @@ class NoteCard extends Component {
   }
 }
 
-export default NoteCard
+const mapDispatchToProps = dispatch => ({
+  deleteNote: note => dispatch(deleteNote(note))
+})
+
+export default connect(null, mapDispatchToProps)(NoteCard)

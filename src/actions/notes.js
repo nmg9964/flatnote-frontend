@@ -16,3 +16,10 @@ export const showNote = note => {
   id: note.id
   }
 }
+
+export const deleteNote = note => {
+  return {
+    type: 'DELETE_NOTE',
+    id: note.id
+  }
+}
