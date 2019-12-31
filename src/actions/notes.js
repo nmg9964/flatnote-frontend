@@ -9,3 +9,10 @@ export const addNote = note => {
     }
   }
 }
+
+export const showNote = note => {
+  return {
+  type: 'SHOW_NOTE',
+  id: note.id
+  }
+}

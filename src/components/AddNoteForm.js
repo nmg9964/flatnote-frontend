@@ -37,7 +37,7 @@ class AddNoteForm extends Component {
     .then(resp => resp.json())
     .then(note => {
       this.props.addNote(note)
-      this.props.history.push('/note/new')
+      this.props.history.push('/dashboard')
     })
     this.setState({ title: '', content: '' })
   }

@@ -1,7 +1,8 @@
 export default function manageNotes(state = {
   currentUser: {},
   notes:[],
-  note: {}
+  note: {},
+  renderedNote: undefined
 }, action) {
   switch(action.type) {
     
@@ -16,13 +17,12 @@ export default function manageNotes(state = {
 
       case 'ADD_NOTE':
         return Object.assign({}, state, {
-          note: {
-            id: action.noteInfo.id,
-            title: action.noteInfo.title,
-            content: action.noteInfo.content,
-            userId: action.noteInfo.userId
-          },
           notes: [...state.notes, action.noteInfo]
+        })
+
+      case 'SHOW_NOTE':
+        return Object.assign({}, state, {
+          renderedNote: action.id
         })
 
     default:
