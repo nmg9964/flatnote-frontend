@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 
 class NoteCard extends Component {
 
-  handleOnClick = (note) => {
+  handleDelete = (note) => {
     const reqObj = 
     {
       method: 'DELETE',
@@ -27,7 +27,8 @@ class NoteCard extends Component {
       <div className='render-note'>
         <h3>{this.props.note.title}</h3>
         <p>{this.props.note.content}</p><br></br>
-        <button onClick={() => this.handleOnClick(this.props.note)}>Delete</button> <button>Edit</button>
+        <button>Edit</button><br></br>
+        <button onClick={() => this.handleDelete(this.props.note)}>Delete</button>
       </div>
     )
   }
