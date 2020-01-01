@@ -18,7 +18,8 @@ class NoteList extends Component {
       })}
       {this.props.renderedNote ?
         <NoteCard 
-        note={this.props.notes.find(note => note.id === this.props.renderedNote)}/>
+        note={this.props.notes.find(note => note.id === this.props.renderedNote)}
+        showNote={this.props.showNote}/>
         : null}
       </div>
   }

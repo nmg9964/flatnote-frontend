@@ -17,6 +17,12 @@ export const showNote = note => {
   }
 }
 
+export const hideNote = () => {
+  return {
+    type: 'HIDE_NOTE'
+  }
+}
+
 export const deleteNote = note => {
   return {
     type: 'DELETE_NOTE',

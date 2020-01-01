@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteNote } from '../actions/notes'
+import { hideNote } from '../actions/notes'
+import { withRouter } from 'react-router'
 
 class NoteCard extends Component {
 
@@ -15,12 +17,9 @@ class NoteCard extends Component {
     }
 
     fetch(`http://localhost:3001/notes/${note.id}`, reqObj)
-    .then(resp => resp.json())
-    .then(note => {
-      console.log(note)
-      this.props.deleteNote(note)
-      this.props.history.push('/dashboard')
-    })
+    this.props.deleteNote(note)
+    this.props.hideNote()
+    this.props.history.push('/dashboard')
   }
 
   render() {
@@ -35,7 +34,8 @@ class NoteCard extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  deleteNote: note => dispatch(deleteNote(note))
+  deleteNote: note => dispatch(deleteNote(note)),
+  hideNote: () => dispatch(hideNote())
 })
 
-export default connect(null, mapDispatchToProps)(NoteCard)
+export default connect(null, mapDispatchToProps)(withRouter(NoteCard))
