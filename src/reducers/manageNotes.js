@@ -35,6 +35,11 @@ export default function manageNotes(state = {
           notes: [...state.notes.filter(note => note.id !== action.id)]
         })
 
+        case 'EDIT_NOTE':
+          return Object.assign({}, state, {
+            notes: [...state.notes, action.noteInfo]
+          })
+
     default:
       return state
   }

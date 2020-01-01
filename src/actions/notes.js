@@ -29,3 +29,13 @@ export const deleteNote = note => {
     id: note.id
   }
 }
+
+export const editNote = note => {
+  return {
+    type: 'EDIT_NOTE',
+    noteInfo: {
+      title: note.title,
+      content: note.content
+    }
+  }
+}
