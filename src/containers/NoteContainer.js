@@ -13,7 +13,6 @@ class NoteContainer extends Component {
 }
 
 const mapStatetoProps = state => {
-  console.log(state)
   return {
     notes: state.notes
    }
