@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { hideNote, hideEdit } from './actions/notes'
+import { connect } from 'react-redux'
  
 const link = {
   width: '100px',
@@ -12,6 +14,12 @@ const link = {
 }
  
 class Navbar extends React.Component {
+
+  handleLogout = () => {
+    this.props.hideNote()
+    this.props.hideEdit()
+  }
+
   render() {
     return (
       <div>
@@ -19,6 +27,7 @@ class Navbar extends React.Component {
           to='/login'
           exact
           style={link}
+          onClick={this.handleLogout}
         >Logout</NavLink>
         <NavLink
           to='/note/new'
@@ -31,4 +40,9 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar
+const mapDispatchToProps = dispatch => ({
+  hideNote: () => dispatch(hideNote()),
+  hideEdit: () => dispatch(hideEdit())
+})
+
+export default connect(null, mapDispatchToProps)(Navbar)

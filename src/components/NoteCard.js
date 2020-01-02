@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import EditNoteForm from './EditNoteForm'
 import { connect } from 'react-redux'
-import { deleteNote } from '../actions/notes'
-import { hideNote } from '../actions/notes'
-import { showEdit } from '../actions/notes'
+import { deleteNote, hideNote, showEdit } from '../actions/notes'
 import { withRouter } from 'react-router'
 
 class NoteCard extends Component {
@@ -32,7 +30,7 @@ class NoteCard extends Component {
     return (
       <div className='render-note'>
         {this.props.renderedEdit ?
-          <EditNoteForm />
+          <EditNoteForm key={this.props.note.id} note={this.props.note}/>
         : <div>
             <h3>{this.props.note.title}</h3>
               <p>{this.props.note.content}</p><br></br>

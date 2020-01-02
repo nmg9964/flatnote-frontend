@@ -13,7 +13,7 @@ class AddNoteForm extends Component {
     const { value, name } = event.target
     this.setState({
       [name]: value
-    });
+    })
   }
 
   handleOnSubmit = event => {
