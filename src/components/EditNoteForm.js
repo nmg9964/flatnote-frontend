@@ -27,7 +27,7 @@ class EditNoteForm extends Component {
       },
       body: JSON.stringify({
         title: this.state.title,
-        content: this.state.content,
+        content: this.state.content
       })
     }
 

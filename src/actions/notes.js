@@ -5,6 +5,7 @@ export const addNote = note => {
       id: note.id,
       title: note.title,
       content: note.content,
+      tags: [],
       userId: note.userId
     }
   }
