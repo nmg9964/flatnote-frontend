@@ -47,6 +47,8 @@ export default function manageNotes(state = {
         })
 
         case 'EDIT_NOTE':
+          let index = state.notes.findIndex(note => note.id === action.note.id)
+          state.notes[index] = action.note
           return Object.assign({}, state, {
             notes: [...state.notes]
           })

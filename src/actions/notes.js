@@ -46,10 +46,6 @@ export const hideEdit = () => {
 export const editNote = note => {
   return {
     type: 'EDIT_NOTE',
-    noteInfo: {
-      id: note.id,
-      title: note.title,
-      content: note.content
-    }
+    note
   }
 }
