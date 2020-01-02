@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 class EditNoteForm extends Component {
   render() {
-    return <div></div>
+    return <div>
+    </div>
   }
 }
 

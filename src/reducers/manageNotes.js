@@ -2,7 +2,8 @@ export default function manageNotes(state = {
   currentUser: {},
   notes:[],
   note: {},
-  renderedNote: undefined
+  renderedNote: undefined,
+  renderedEdit: undefined
 }, action) {
   switch(action.type) {
     
@@ -34,6 +35,16 @@ export default function manageNotes(state = {
         return Object.assign({}, state, {
           notes: [...state.notes.filter(note => note.id !== action.id)]
         })
+
+        case 'SHOW_EDIT':
+          return Object.assign({}, state, {
+            renderedEdit: action.id
+          })
+
+        case 'HIDE_EDIT':
+          return Object.assign({}, state, {
+            renderedEdit: undefined
+          })
 
         case 'EDIT_NOTE':
           return Object.assign({}, state, {

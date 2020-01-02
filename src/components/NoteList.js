@@ -6,22 +6,23 @@ import { showNote } from '../actions/notes'
 class NoteList extends Component {
 
   render() {
-    return <div>
-      <h2>Your Notes</h2>
-      {this.props.notes.map(note => {
-        console.log(this.props.renderedNote)
-        return (
-          <div>
-            <p onClick={() => this.props.showNote(note)}>{note.title}</p>
-          </div>
-        )
-      })}
-      {this.props.renderedNote ?
-        <NoteCard 
-        note={this.props.notes.find(note => note.id === this.props.renderedNote)}
-        showNote={this.props.showNote}/>
-        : null}
+    return (
+      <div>
+        <h2>Your Notes</h2>
+          {this.props.notes.map(note => {
+          return (
+            <div>
+              <p onClick={() => this.props.showNote(note)}>{note.title}</p>
+            </div>
+          )
+        })}
+        {this.props.renderedNote ?
+          <NoteCard 
+          note={this.props.notes.find(note => note.id === this.props.renderedNote)}
+          showNote={this.props.showNote}/>
+          : null}
       </div>
+    )
   }
 }
 

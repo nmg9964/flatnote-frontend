@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import EditNoteForm from './EditNoteForm'
 import { connect } from 'react-redux'
 import { deleteNote } from '../actions/notes'
 import { hideNote } from '../actions/notes'
+import { showEdit } from '../actions/notes'
 import { withRouter } from 'react-router'
 
 class NoteCard extends Component {
@@ -22,21 +24,34 @@ class NoteCard extends Component {
     this.props.history.push('/dashboard')
   }
 
+  handleEdit = note => {
+    this.props.showEdit(note)
+  }
+
   render() {
     return (
       <div className='render-note'>
-        <h3>{this.props.note.title}</h3>
-        <p>{this.props.note.content}</p><br></br>
-        <button>Edit</button><br></br>
-        <button onClick={() => this.handleDelete(this.props.note)}>Delete</button>
+        {this.props.renderedEdit ?
+          <EditNoteForm />
+        : <div>
+            <h3>{this.props.note.title}</h3>
+              <p>{this.props.note.content}</p><br></br>
+              <button onClick={() => this.handleEdit(this.props.note)}>Edit</button><br></br>
+              <button onClick={() => this.handleDelete(this.props.note)}>Delete</button>
+          </div>}
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  deleteNote: note => dispatch(deleteNote(note)),
-  hideNote: () => dispatch(hideNote())
+const mapStateToProps = state => ({
+  renderedEdit: state.renderedEdit
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(NoteCard))
+const mapDispatchToProps = dispatch => ({
+  deleteNote: note => dispatch(deleteNote(note)),
+  hideNote: () => dispatch(hideNote()),
+  showEdit: note => dispatch(showEdit(note))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NoteCard))
