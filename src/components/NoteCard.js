@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EditNoteForm from './EditNoteForm'
 import { connect } from 'react-redux'
-import { deleteNote, hideNote, showEdit } from '../actions/notes'
+import { deleteNote, showEdit } from '../actions/notes'
 import { withRouter } from 'react-router'
 
 class NoteCard extends Component {
@@ -18,7 +18,6 @@ class NoteCard extends Component {
 
     fetch(`http://localhost:3001/notes/${note.id}`, reqObj)
     this.props.deleteNote(note)
-    this.props.hideNote()
     this.props.history.push('/dashboard')
   }
 
@@ -36,7 +35,6 @@ class NoteCard extends Component {
               <p>{this.props.note.content}</p><br></br>
               <button onClick={() => this.handleEdit(this.props.note)}>Edit</button><br></br>
               <button onClick={() => this.handleDelete(this.props.note)}>Delete</button><br></br><br></br>
-              {console.log(this.props.note)}
               {this.props.note.tags.map(tag => {
                 return `Tags: #${tag.text}`
               })}
@@ -52,7 +50,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteNote: note => dispatch(deleteNote(note)),
-  hideNote: () => dispatch(hideNote()),
   showEdit: note => dispatch(showEdit(note))
 })
 

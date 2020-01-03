@@ -8,3 +8,9 @@ export const addUser = (user) => {
     }
   }
 }
+
+export const logoutUser = () => {
+  return {
+    type: 'LOG_OUT'
+  }
+}

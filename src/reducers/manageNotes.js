@@ -16,6 +16,12 @@ export default function manageNotes(state = {
         notes: action.userInfo.notes
       })
 
+      case 'LOG_OUT':
+        return Object.assign({}, state, {
+          renderedNote: undefined,
+          renderedEdit: undefined
+        })
+
       case 'ADD_NOTE':
         return Object.assign({}, state, {
           notes: [...state.notes, action.noteInfo]
@@ -26,24 +32,15 @@ export default function manageNotes(state = {
           renderedNote: action.id
         })
 
-      case 'HIDE_NOTE':
-        return Object.assign({}, state, {
-          renderedNote: undefined
-        })
-
       case 'DELETE_NOTE':
         return Object.assign({}, state, {
-          notes: [...state.notes.filter(note => note.id !== action.id)]
+          notes: [...state.notes.filter(note => note.id !== action.id)],
+          renderedNote: undefined
         })
 
       case 'SHOW_EDIT':
         return Object.assign({}, state, {
           renderedEdit: action.id
-        })
-
-      case 'HIDE_EDIT':
-        return Object.assign({}, state, {
-          renderedEdit: undefined
         })
 
         case 'EDIT_NOTE':
@@ -55,7 +52,8 @@ export default function manageNotes(state = {
             }
           })
           return Object.assign({}, state, {
-            notes: newNotes
+            notes: newNotes,
+            renderedEdit: undefined
           })
 
     default:

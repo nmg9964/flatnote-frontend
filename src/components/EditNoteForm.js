@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { editNote, hideEdit } from '../actions/notes'
+import { editNote } from '../actions/notes'
 
 class EditNoteForm extends Component {
   state = {
@@ -35,7 +35,6 @@ class EditNoteForm extends Component {
     .then(resp => resp.json())
     .then(note => {
       this.props.editNote(note)
-      this.props.hideEdit()
     })
     this.setState({ title: this.props.note.title, content: this.props.note.content })
   }
@@ -68,8 +67,7 @@ class EditNoteForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  editNote: note => dispatch(editNote(note)),
-  hideEdit: () => dispatch(hideEdit())
+  editNote: note => dispatch(editNote(note))
 })
 
 export default connect(null, mapDispatchToProps)(EditNoteForm)

@@ -18,12 +18,6 @@ export const showNote = note => {
   }
 }
 
-export const hideNote = () => {
-  return {
-    type: 'HIDE_NOTE'
-  }
-}
-
 export const deleteNote = note => {
   return {
     type: 'DELETE_NOTE',
@@ -35,12 +29,6 @@ export const showEdit = note => {
   return {
     type: 'SHOW_EDIT',
     id: note.id
-  }
-}
-
-export const hideEdit = () => {
-  return {
-    type: 'HIDE_EDIT'
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { hideNote, hideEdit } from './actions/notes'
+import { logoutUser } from './actions/loginUser'
 import { connect } from 'react-redux'
  
 const link = {
@@ -16,8 +16,7 @@ const link = {
 class Navbar extends React.Component {
 
   handleLogout = () => {
-    this.props.hideNote()
-    this.props.hideEdit()
+    this.props.logoutUser()
   }
 
   render() {
@@ -41,8 +40,7 @@ class Navbar extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  hideNote: () => dispatch(hideNote()),
-  hideEdit: () => dispatch(hideEdit())
+  logoutUser: () => dispatch(logoutUser())
 })
 
 export default connect(null, mapDispatchToProps)(Navbar)
