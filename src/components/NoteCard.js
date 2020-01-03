@@ -36,7 +36,7 @@ class NoteCard extends Component {
               <button onClick={() => this.handleEdit(this.props.note)}>Edit</button><br></br>
               <button onClick={() => this.handleDelete(this.props.note)}>Delete</button><br></br><br></br>
               {this.props.note.tags.map(tag => {
-                return `Tags: #${tag.text}`
+                return `#${tag.text}` 
               })}
           </div>}
       </div>
