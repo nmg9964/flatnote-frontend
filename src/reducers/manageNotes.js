@@ -24,7 +24,8 @@ export default function manageNotes(state = {
 
       case 'ADD_NOTE':
         return Object.assign({}, state, {
-          notes: [...state.notes, action.noteInfo]
+          notes: [...state.notes, action.noteInfo],
+          renderedNote: undefined
         })
 
       case 'SHOW_NOTE':
@@ -53,7 +54,8 @@ export default function manageNotes(state = {
           })
           return Object.assign({}, state, {
             notes: newNotes,
-            renderedEdit: undefined
+            renderedEdit: undefined,
+            renderedNote: undefined
           })
 
     default:
