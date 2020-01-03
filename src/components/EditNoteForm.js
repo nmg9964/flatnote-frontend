@@ -46,14 +46,14 @@ class EditNoteForm extends Component {
       <h3>Edit Note</h3>
       <form onSubmit ={this.handleOnSubmit}>
 
-        Title |
+        Title &nbsp;&nbsp;
         <input
         type='text'
         name='title'
         value={this.state.title}
-        onChange={this.handleOnChange}/><br></br>
+        onChange={this.handleOnChange}/><br></br><br></br>
 
-        Content |
+        Content &nbsp;&nbsp;
         <textarea 
         name="content" 
         cols="40" rows="5"

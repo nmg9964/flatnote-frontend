@@ -35,10 +35,10 @@ class NoteCard extends Component {
             <h3>{this.props.note.title}</h3>
               <p>{this.props.note.content}</p><br></br>
               <button onClick={() => this.handleEdit(this.props.note)}>Edit</button><br></br>
-              <button onClick={() => this.handleDelete(this.props.note)}>Delete</button><br></br>
+              <button onClick={() => this.handleDelete(this.props.note)}>Delete</button><br></br><br></br>
               {console.log(this.props.note)}
               {this.props.note.tags.map(tag => {
-                return `#${tag.text}`
+                return `Tags: #${tag.text}`
               })}
           </div>}
       </div>

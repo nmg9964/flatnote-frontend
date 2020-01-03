@@ -46,25 +46,27 @@ class AddNoteForm extends Component {
     return (
     <div>
       <Navbar />
-      <h1>New Note</h1>
-      <form onSubmit={this.handleOnSubmit}>
+      <div className='render-note'>
+        <h3>New Note</h3>
+        <form onSubmit={this.handleOnSubmit}>
 
-        Title |
-        <input
-        type='text'
-        name='title'
-        value={this.state.title}
-        onChange={this.handleOnChange}/><br></br>
+          Title &nbsp;&nbsp;
+          <input
+          type='text'
+          name='title'
+          value={this.state.title}
+          onChange={this.handleOnChange}/><br></br><br></br>
+          
+          Content &nbsp;&nbsp;
+          <textarea 
+          name="content" 
+          cols="40" rows="5"
+          value={this.state.content}
+          onChange={this.handleOnChange}/><br></br>
 
-        Content |
-        <textarea 
-        name="content" 
-        cols="40" rows="5"
-        value={this.state.content}
-        onChange={this.handleOnChange}/><br></br>
-
-        <input value='Save' type='submit'/>
-      </form>
+          <input value='Save' type='submit'/>
+        </form>
+      </div>
     </div>
     )
   }
